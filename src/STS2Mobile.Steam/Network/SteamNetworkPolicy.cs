@@ -32,6 +32,8 @@ public static class SteamNetworkPolicy
     // provider's virtual-host form; path-style addresses, which could name any bucket, are refused.
     private static readonly Regex[] CloudStorageHosts =
     [
+        // Steam Cloud's Bangkok storage endpoint observed in the user's download log.
+        new(@"^steamcloud-bkk\.oss-ap-southeast-7\.aliyuncs\.com\z", RegexOptions.CultureInvariant),
         // Amazon S3
         new(@"^steamcloud-[a-z0-9]+(?:-[a-z0-9]+)*\.s3\.dualstack\.[a-z]{2}-[a-z]+-[0-9]\.amazonaws\.com\z", RegexOptions.CultureInvariant),
         // Google Cloud Storage
